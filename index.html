@@ -13,6 +13,66 @@
 
 <script>
 console.log("Hello World");
+
+function getComputerChoice() {
+    const computerChoice = Math.floor(Math.random()  * 3);
+
+    if (computerChoice === 0) {
+        return "rock";
+    } else if (computerChoice === 1) {
+        return "paper";
+    } else if (computerChoice === 2) {
+        return "scissors";
+    }
+}
+
+
+function getHumanChoice() {
+    let humanChoice = prompt("Rock, paper, or scissors? ").toLowerCase();
+    console.log(humanChoice);
+    return humanChoice;
+}
+
+let humanScore = 0
+let computerScore = 0
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log("It's a tie!");
+    } else if (
+        (humanChoice ==="rock" && computerChoice === "scissors")
+        ||
+        (humanChoice ==="paper" && computerChoice === "rock")
+        ||
+        (humanChoice ==="scissors" && computerChoice === "paper")
+    ) {
+        console.log("You win!");
+        humanScore ++;
+
+    } else {
+        console.log("You lose");
+        computerScore ++;
+    }
+}
+
+function playGame() {
+    for(let i = 0; i <= 4; i++) {
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+        
+        playRound(humanChoice, computerChoice);
+    }
+    
+    if (humanScore > computerScore) {
+        console.log("You win the game!");
+    } else if (humanScore < computerScore){
+        console.log("You lose the game!");
+    } else {
+        console.log("It's a tie game!");
+    }
+} 
+
+playGame();
 </script>
 
 </html>
